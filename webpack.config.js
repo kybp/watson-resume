@@ -2,7 +2,7 @@ const { CheckerPlugin } = require('awesome-typescript-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path              = require('path')
 
-const srcDir = path.resolve(__dirname, 'src')
+const srcDir = path.resolve(__dirname, 'src', 'client')
 const outDir = path.resolve(__dirname, 'public')
 
 module.exports = {

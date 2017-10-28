@@ -1,2 +1,5 @@
+config/credentials.json
 node_modules
 public
+doc
+server.js
