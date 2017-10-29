@@ -3,10 +3,10 @@ import FlatButton from 'material-ui/FlatButton'
 import * as React from 'react'
 import { Dispatch } from 'redux'
 import { mountWithMockedDispatch } from './helpers'
-import ResumeForm from '../../src/client/components/ResumeForm'
-import reducer from '../../src/client/reducers'
-import Actions, { TypeKeys } from '../../src/client/actions'
-import { setCoverLetterText } from '../../src/client/actions'
+import ResumeForm from '../../../src/client/components/ResumeForm'
+import reducer from '../../../src/client/reducers'
+import Actions, { TypeKeys } from '../../../src/client/actions'
+import { setCoverLetterText } from '../../../src/client/actions'
 
 describe('<ResumeForm />', () => {
   let onSubmit: any

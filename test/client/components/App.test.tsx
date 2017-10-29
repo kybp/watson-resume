@@ -1,8 +1,8 @@
 import AppBar from 'material-ui/AppBar'
 import * as React from 'react'
-import App from '../../src/client/components/App'
+import App from '../../../src/client/components/App'
+import ResumeForm from '../../../src/client/components/ResumeForm'
 import { mount } from './helpers'
-import ResumeForm from '../../src/client/components/ResumeForm'
 
 describe('<App />', () => {
   const title = "Watson Resume Checker"

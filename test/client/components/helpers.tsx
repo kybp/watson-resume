@@ -5,9 +5,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import * as React from 'react'
 import { ReactElement } from 'react'
 import { Provider } from 'react-redux'
-import { createStore, Store } from 'redux'
-import Actions, { testInit } from '../../src/client/actions'
-import reducer from '../../src/client/reducers'
+import { createStore, Dispatch, Store } from 'redux'
+import Actions, { testInit } from '../../../src/client/actions'
+import reducer from '../../../src/client/reducers'
 
 const mountWithStore = (
   element: ReactElement<any>,
