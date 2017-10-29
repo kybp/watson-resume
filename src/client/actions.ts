@@ -40,7 +40,7 @@ type Actions =
   | IToggleOption
 export default Actions
 
-export interface IToggleOption {
+interface IToggleOption {
   option: QueryOptions,
   type: TypeKeys.TOGGLE_OPTION,
 }
@@ -53,7 +53,7 @@ export const toggleOption = (option: QueryOptions): IToggleOption => ({
   type: TypeKeys.TOGGLE_OPTION,
 })
 
-export interface ISetResumeText {
+interface ISetResumeText {
   text: string
   type: TypeKeys.SET_RESUME_TEXT
 }
@@ -79,7 +79,7 @@ export const setCoverLetterText = (text: string): ISetCoverLetterText => ({
   type: TypeKeys.SET_COVER_LETTER_TEXT,
 })
 
-export interface ITestInit {
+interface ITestInit {
   type: TypeKeys.TEST_INIT
 }
 
