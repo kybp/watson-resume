@@ -1,5 +1,8 @@
 # Watson Resume Checker
 
+This is a small application that allows users to submit their cover letter and
+resume to have them analysed by IBM Watson Natural Language Understanding.
+
 ## Installation
 
 Run `yarn` or `npm i` in the root project directory to install all dependencies
