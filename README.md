@@ -9,15 +9,17 @@ The project also requires a file in `config` called `credentials.json`
 which should be a JSON document with the following keys:
 
  * **url** - The IBM Watson API endpoint to send requests to, for example
-   `https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze?version=2017-02-27`.
+   `https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze`.
+ * **version** - The Natural Language Understanding API version to pass as a
+   query paramter, for example `2017-02-27`.
  * **username** - Your Watson Natural Language Understanding username.
  * **password** - Your Watson Natural Language Understanding password.
 
 ## Running
 
-The app can be started with `yarn start` or `npm start` in the root project
-directory. By default, the app will run on port 3000, but this can be customised
-by setting the environment variable `$PORT`.
+Once installed, the app can be started with `yarn start` or `npm start` in the
+root project directory. By default, the app will run on port 3000, but this can
+be customised by setting the environment variable `$PORT`.
 
 ## Scripts
 
@@ -32,4 +34,5 @@ $script_name` or `npm run $script_name`:
  * **lint** - Lint the entire project.
  * **lint:client** - Lint only the frontend sources.
  * **lint:server** - Lint only the backend sources.
+ * **start** - Start the app.
  * **test** - Run the test suite.

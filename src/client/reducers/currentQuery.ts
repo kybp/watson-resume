@@ -1,5 +1,5 @@
+import { QueryOptions } from '../../shared/types'
 import Actions, { TypeKeys } from '../actions'
-import { QueryOptions } from '../types'
 
 const initialState = {
   coverLetter: '',

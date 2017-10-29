@@ -1,4 +1,4 @@
-import { QueryOptions } from './types'
+import { IQueryResults, QueryOptions } from '../shared/types'
 
 /**
  * This module contains action type definitions and action creators. All actions
@@ -22,10 +22,13 @@ import { QueryOptions } from './types'
  * The allowed type keys for actions.
  */
 export enum TypeKeys {
-  SET_COVER_LETTER_TEXT = 'SET_COVER_LETTER_TEXT',
-  SET_RESUME_TEXT       = 'SET_RESUME_TEXT',
-  TEST_INIT             = 'TEST_INIT',
-  TOGGLE_OPTION         = 'TOGGLE_OPTION',
+  BEGIN_LOADING_RESULTS   = 'BEGIN_LOADING_RESULTS',
+  FAIL_LOADING_RESULTS    = 'FAIL_LOADING_RESULTS',
+  SET_COVER_LETTER_TEXT   = 'SET_COVER_LETTER_TEXT',
+  SET_RESUME_TEXT         = 'SET_RESUME_TEXT',
+  SUCCEED_LOADING_RESULTS = 'SUCCEED_LOADING_RESULTS',
+  TEST_INIT               = 'TEST_INIT',
+  TOGGLE_OPTION           = 'TOGGLE_OPTION',
 }
 
 /**
@@ -34,8 +37,11 @@ export enum TypeKeys {
  * if you add a new action interface, make sure to add it to this union.
  */
 type Actions =
+  | IBeginLoadingResults
+  | IFailLoadingResults
   | ISetCoverLetterText
   | ISetResumeText
+  | ISucceedLoadingResults
   | ITestInit
   | IToggleOption
 export default Actions
@@ -86,6 +92,53 @@ interface ISetCoverLetterText {
 export const setCoverLetterText = (text: string): ISetCoverLetterText => ({
   text,
   type: TypeKeys.SET_COVER_LETTER_TEXT,
+})
+
+/**
+ * See [[beginLoadingResults]].
+ */
+interface IBeginLoadingResults {
+  type: TypeKeys.BEGIN_LOADING_RESULTS
+}
+
+/**
+ * Notify the app that a query has been submitted and we are waiting on the
+ * response.
+ */
+export const beginLoadingResults = (): IBeginLoadingResults => ({
+  type: TypeKeys.BEGIN_LOADING_RESULTS,
+})
+
+/**
+ * See [[succeedLoadingResults]].
+ */
+interface ISucceedLoadingResults {
+  results: IQueryResults
+  type: TypeKeys.SUCCEED_LOADING_RESULTS
+}
+
+/**
+ * Notify the app that results have been successfully loaded.
+ */
+export const succeedLoadingResults = (
+  results: IQueryResults,
+): ISucceedLoadingResults => ({
+  results,
+  type: TypeKeys.SUCCEED_LOADING_RESULTS,
+})
+
+/**
+ * See [[failLoadingResults]].
+ */
+interface IFailLoadingResults {
+  type: TypeKeys.FAIL_LOADING_RESULTS
+}
+
+/**
+ * Notify the app that a query request failed.
+ */
+export const failLoadingResults = (): IFailLoadingResults => ({
+  type: TypeKeys.FAIL_LOADING_RESULTS,
 })
 
 /**

@@ -2,7 +2,7 @@ import Actions, { TypeKeys } from '../../../src/client/actions'
 import { setCoverLetterText, setResumeText } from '../../../src/client/actions'
 import { testInit, toggleOption } from '../../../src/client/actions'
 import reducer from '../../../src/client/reducers/currentQuery'
-import { QueryOptions } from '../../../src/client/types'
+import { QueryOptions } from '../../../src/shared/types'
 
 describe('current query reducer', () => {
   const initialState = reducer(undefined, testInit())

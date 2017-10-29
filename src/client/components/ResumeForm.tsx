@@ -69,4 +69,4 @@ const mapStateToProps = (
   { ...oldProps, query: currentQuery }
 )
 
-export default connect(mapStateToProps, undefined)(ResumeForm)
+export default connect(mapStateToProps)(ResumeForm)

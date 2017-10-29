@@ -2,8 +2,9 @@ import Checkbox from 'material-ui/Checkbox'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
+import { QueryOptions } from '../../shared/types'
 import Actions, { toggleOption } from '../actions'
-import { IWatsonQuery, QueryOptions } from '../types'
+import { IWatsonQuery } from '../types'
 
 interface IProps {
   dispatch?: Dispatch<Actions>
@@ -34,4 +35,4 @@ const mapStateToProps = (
   { ...oldProps, query: currentQuery }
 )
 
-export default connect(mapStateToProps, undefined)(QueryOptionsSelector)
+export default connect(mapStateToProps)(QueryOptionsSelector)
