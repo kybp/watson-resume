@@ -6,7 +6,7 @@ import ResumeForm from '../../src/client/components/ResumeForm'
 
 describe('<App />', () => {
   const title = "Watson Resume Checker"
-  const [app, _] = mount(<App />)
+  const app = mount(<App />)
 
   it(`renders an AppBar with title ${title}`, () => {
     expect(app.find(AppBar).props().title).toBe(title)

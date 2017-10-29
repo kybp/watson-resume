@@ -1,22 +1,23 @@
-import FlatButton from 'material-ui/FlatButton'
-import { MockStore } from 'redux-mock-store'
-import * as React from 'react'
 import { ReactWrapper } from 'enzyme'
-import { mount } from './helpers'
-import reducer from '../../src/client/reducers'
+import FlatButton from 'material-ui/FlatButton'
+import * as React from 'react'
+import { Dispatch } from 'redux'
+import { mountWithMockedDispatch } from './helpers'
 import ResumeForm from '../../src/client/components/ResumeForm'
-import { setCoverLetterText, TypeKeys } from '../../src/client/actions'
+import reducer from '../../src/client/reducers'
+import Actions, { TypeKeys } from '../../src/client/actions'
+import { setCoverLetterText } from '../../src/client/actions'
 
 describe('<ResumeForm />', () => {
   let onSubmit: any
   let resumeForm: ReactWrapper<any>
-  let store: MockStore<any>
+  let dispatch: Dispatch<Actions>
 
   beforeEach(() => {
     onSubmit = jest.fn()
-    const temp = mount(<ResumeForm onSubmit={ onSubmit } />)
+    const temp = mountWithMockedDispatch(<ResumeForm onSubmit={ onSubmit } />)
     resumeForm = temp[0]
-    store = temp[1]
+    dispatch = temp[1]
   })
 
   afterEach(() => {
@@ -37,7 +38,7 @@ describe('<ResumeForm />', () => {
     resumeForm.find('textarea#cover-letter-input').simulate('change', {
       event: { target: { value: text } }
     })
-    expect(store.dispatch).toBeCalledWith({
+    expect(dispatch).toBeCalledWith({
       text: '',                 // FIXME
       type: TypeKeys.SET_COVER_LETTER_TEXT,
     })
@@ -48,7 +49,7 @@ describe('<ResumeForm />', () => {
     resumeForm.find('textarea#resume-input').simulate('change', {
       event: { target: { value: text } }
     })
-    expect(store.dispatch).toBeCalledWith({
+    expect(dispatch).toBeCalledWith({
       text: '',                 // FIXME
       type: TypeKeys.SET_RESUME_TEXT,
     })
