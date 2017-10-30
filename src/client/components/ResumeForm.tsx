@@ -31,34 +31,51 @@ const ResumeForm = ({ dispatch, onSubmit, query }: IProps) => {
   }
 
   return (
-    <Card>
-      <CardTitle
-        title="Submit your cover letter and resume for analysis"
-        subtitle="See what your application looks like to IBM Watson"
-      />
-      <form onSubmit={ () => onSubmit(query) }>
-        <TextField
-          id="cover-letter-input"
-          multiLine={ true }
-          rows={ 8 }
-          hintText="Cover Letter"
-          value={ query.coverLetter }
-          onChange={ handleCoverLetterChange }
+    <div
+      style={ {
+          display: 'flex',
+          justifyContent: 'center',
+          paddingTop: '20px',
+          width: '100%',
+      } }
+    >
+      <Card
+        style={ {
+            maxWidth: '80%',
+            paddingLeft: '20px',
+            paddingRight: '20px',
+        } }
+      >
+        <CardTitle
+          title="Submit your cover letter and resume for analysis"
+          subtitle="See what your application looks like to IBM Watson"
         />
-        <TextField
-          id="resume-input"
-          multiLine={ true }
-          rows={ 8 }
-          hintText="Resume"
-          value={ query.resume }
-          onChange={ handleResumeChange }
-        />
-        <QueryOptionsSelector />
-        <CardActions>
-          <FlatButton label="Submit" onClick={ () => onSubmit(query) } />
-        </CardActions>
-      </form>
-    </Card>
+        <form onSubmit={ () => onSubmit(query) }>
+          <TextField
+            id="cover-letter-input"
+            multiLine={ true }
+            rows={ 8 }
+            rowsMax={ 8 }
+            hintText="Cover Letter"
+            value={ query.coverLetter }
+            onChange={ handleCoverLetterChange }
+          />
+          <TextField
+            id="resume-input"
+            multiLine={ true }
+            rows={ 8 }
+            rowsMax={ 8 }
+            hintText="Resume"
+            value={ query.resume }
+            onChange={ handleResumeChange }
+          />
+          <QueryOptionsSelector />
+          <CardActions>
+            <FlatButton label="Submit" onClick={ () => onSubmit(query) } />
+          </CardActions>
+        </form>
+      </Card>
+    </div>
   )
 }
 
