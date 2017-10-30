@@ -26,6 +26,15 @@ describe('prepareQuery', () => {
       }).toThrowError('Query options must be supplied.')
     })
 
+    it('throws when all options are false', () => {
+      expect(() => {
+        prepareQuery({ coverLetter, resume, options: {
+          emotion: false,
+          keywords: false,
+        }})
+      }).toThrowError('Query options must be supplied.')
+    })
+
     it('throws when neither resume nor cover letter is passed', () => {
       expect(() => {
         prepareQuery({ options: { emotion: true } })

@@ -23,18 +23,18 @@ export const isQueryOption = (object: any): boolean => ([
   'sentiment',
 ].indexOf(object) !== -1)
 
-interface ICategoryResult {
+export interface ICategoryResult {
   label: string
   score: number
 }
 
-interface IConceptResult {
+export interface IConceptResult {
   dbpedia_resource: string
   relevance: number
   text: string
 }
 
-interface IEmotionResult {
+export interface IEmotionResult {
   anger: number
   disgust: number
   fear: number
@@ -42,7 +42,7 @@ interface IEmotionResult {
   sadness: number
 }
 
-interface IEntityResult {
+export interface IEntityResult {
   type: string
   text: string
   sentiment?: ISentimentResult
@@ -51,16 +51,20 @@ interface IEntityResult {
   count: number
 }
 
-interface IKeywordResult {
+export interface IScore {
+  score: number
+}
+
+export interface IKeywordResult {
   emotion?: IEmotionResult
   relevance: number
-  sentiment: ISentimentResult
+  sentiment?: IScore,
   text: string
 }
 
-interface ISentimentResult {
-  score: number
+export interface ISentimentResult {
   label: string
+  score: number
 }
 
 /**

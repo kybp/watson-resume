@@ -6,6 +6,9 @@ import { isQueryOption, QueryOptions } from '../shared/types'
  */
 const validateQuery = (requestBody: any) => {
   if (!requestBody.options ||
+      (Object.keys(requestBody.options).filter((key) => (
+        requestBody.options[key]
+      )).length === 0) ||
       Object.keys(requestBody.options).filter(isQueryOption).length === 0) {
     throw Error('Query options must be supplied.')
   }

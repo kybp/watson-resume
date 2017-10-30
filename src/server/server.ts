@@ -22,7 +22,7 @@ app.post('/analyze', (request, response) => {
     return
   }
 
-  axios.post(`${credentials.url}`, prepareQuery(request.body), {
+  axios.post(`${credentials.url}`, prepared, {
     auth: credentials,
     params: { version: credentials.version },
   }).then(({ data }) => {

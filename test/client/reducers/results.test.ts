@@ -28,7 +28,6 @@ const queryResults: IQueryResults = {
     },
     relevance: 0.933292,
     sentiment: {
-      label: 'positive',
       score: 0.438975,
     },
     text: 'software development industry',
@@ -42,7 +41,6 @@ const queryResults: IQueryResults = {
     },
     relevance: 0.816909,
     sentiment: {
-      label: 'neutral',
       score: 0,
     },
     text: 'full-stack developer',
