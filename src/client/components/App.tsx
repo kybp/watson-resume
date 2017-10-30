@@ -1,6 +1,5 @@
 import axios from 'axios'
 import AppBar from 'material-ui/AppBar'
-import CircularProgress from 'material-ui/CircularProgress'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
@@ -11,6 +10,7 @@ import { failLoadingResults } from '../actions'
 import { succeedLoadingResults } from '../actions'
 import * as ResultsReducer from '../reducers/results'
 import { IWatsonQuery, ResultsLoadingStates } from '../types'
+import LoadingDisplay from './LoadingDisplay'
 import Results from './Results'
 import ResumeForm from './ResumeForm'
 
@@ -29,7 +29,7 @@ export const App = ({ dispatch, loadingState }: IProps) => (
     { loadingState === 'not requested'
       ? <ResumeForm onSubmit={ submitQuery(dispatch) } />
       : loadingState === 'loading'
-      ? <CircularProgress />
+      ? <LoadingDisplay />
       : <Results /> }
   </div>
 )

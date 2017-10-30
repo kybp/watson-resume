@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme'
 import AppBar from 'material-ui/AppBar'
-import CircularProgress from 'material-ui/CircularProgress'
 import * as React from 'react'
 import { App } from '../../../src/client/components/App'
+import LoadingDisplay from '../../../src/client/components/LoadingDisplay'
 import Results from '../../../src/client/components/Results'
 import ResumeForm from '../../../src/client/components/ResumeForm'
 
@@ -21,8 +21,8 @@ describe('<App />', () => {
       expect(app.find(ResumeForm).exists()).toBe(true)
     })
 
-    it('does not render a CircularProgress', () => {
-      expect(app.find(CircularProgress).exists()).toBe(false)
+    it('does not render a LoadingDisplay', () => {
+      expect(app.find(LoadingDisplay).exists()).toBe(false)
     })
 
     it('does not render a Results', () => {
@@ -33,8 +33,8 @@ describe('<App />', () => {
   describe('when loadingState is "loading"', () => {
     const app = shallow(<App loadingState="loading" />)
 
-    it('renders a CircularProgress', () => {
-      expect(app.find(CircularProgress).exists()).toBe(true)
+    it('renders a LoadingDisplay', () => {
+      expect(app.find(LoadingDisplay).exists()).toBe(true)
     })
 
     it('does not render a ResumeForm', () => {
@@ -57,8 +57,8 @@ describe('<App />', () => {
       expect(app.find(ResumeForm).exists()).toBe(false)
     })
 
-    it('does not render a CircularProgress', () => {
-      expect(app.find(CircularProgress).exists()).toBe(false)
+    it('does not render a LoadingDisplay', () => {
+      expect(app.find(LoadingDisplay).exists()).toBe(false)
     })
   })
 })
