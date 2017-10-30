@@ -23,6 +23,7 @@ import { IQueryResults, QueryOptions } from '../shared/types'
  */
 export enum TypeKeys {
   BEGIN_LOADING_RESULTS   = 'BEGIN_LOADING_RESULTS',
+  CLOSE_ERROR_DIALOG      = 'CLOSE_ERROR_DIALOG',
   FAIL_LOADING_RESULTS    = 'FAIL_LOADING_RESULTS',
   SET_COVER_LETTER_TEXT   = 'SET_COVER_LETTER_TEXT',
   SET_RESUME_TEXT         = 'SET_RESUME_TEXT',
@@ -38,6 +39,7 @@ export enum TypeKeys {
  */
 type Actions =
   | IBeginLoadingResults
+  | ICloseErrorDialog
   | IFailLoadingResults
   | ISetCoverLetterText
   | ISetResumeText
@@ -131,14 +133,30 @@ export const succeedLoadingResults = (
  * See [[failLoadingResults]].
  */
 interface IFailLoadingResults {
+  reason: string
   type: TypeKeys.FAIL_LOADING_RESULTS
 }
 
 /**
- * Notify the app that a query request failed.
+ * Notify the app that a query request failed for the given reason.
  */
-export const failLoadingResults = (): IFailLoadingResults => ({
+export const failLoadingResults = (reason: string): IFailLoadingResults => ({
+  reason,
   type: TypeKeys.FAIL_LOADING_RESULTS,
+})
+
+/**
+ * See [[closeErrorDialog]].
+ */
+interface ICloseErrorDialog {
+  type: TypeKeys.CLOSE_ERROR_DIALOG
+}
+
+/**
+ * Close the error dialog.
+ */
+export const closeErrorDialog = (): ICloseErrorDialog => ({
+  type: TypeKeys.CLOSE_ERROR_DIALOG,
 })
 
 /**

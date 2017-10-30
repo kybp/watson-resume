@@ -2,6 +2,7 @@ import { shallow } from 'enzyme'
 import AppBar from 'material-ui/AppBar'
 import * as React from 'react'
 import { App } from '../../../src/client/components/App'
+import ErrorDialog from '../../../src/client/components/ErrorDialog'
 import LoadingDisplay from '../../../src/client/components/LoadingDisplay'
 import Results from '../../../src/client/components/Results'
 import ResumeForm from '../../../src/client/components/ResumeForm'
@@ -12,6 +13,11 @@ describe('<App />', () => {
   it(`renders an AppBar with title ${title}`, () => {
     const app = shallow(<App />)
     expect(app.find(AppBar).props().title).toBe(title)
+  })
+
+  it('renders an ErrorDialog', () => {
+    const app = shallow(<App />)
+    expect(app.find(ErrorDialog).exists()).toBe(true)
   })
 
   describe('when loadingState is "not requested"', () => {

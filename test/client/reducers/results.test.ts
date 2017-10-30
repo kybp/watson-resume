@@ -92,7 +92,7 @@ describe('results reducer', () => {
 
   describe(TypeKeys.FAIL_LOADING_RESULTS, () => {
     const loading = reducer(initialState, beginLoadingResults())
-    const updated = reducer(loading, failLoadingResults())
+    const updated = reducer(loading, failLoadingResults('message'))
 
     it('sets loadingState to "not requested"', () => {
       expect(updated.loadingState).toBe('not requested')

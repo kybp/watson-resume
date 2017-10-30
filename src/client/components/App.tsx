@@ -10,6 +10,7 @@ import { failLoadingResults } from '../actions'
 import { succeedLoadingResults } from '../actions'
 import * as ResultsReducer from '../reducers/results'
 import { IWatsonQuery, ResultsLoadingStates } from '../types'
+import ErrorDialog from './ErrorDialog'
 import LoadingDisplay from './LoadingDisplay'
 import Results from './Results'
 import ResumeForm from './ResumeForm'
@@ -31,13 +32,13 @@ export const App = ({ dispatch, loadingState }: IProps) => (
       : loadingState === 'loading'
       ? <LoadingDisplay />
       : <Results /> }
+    <ErrorDialog />
   </div>
 )
 
 /**
  * Submit the current query to the backend for analysis by IBM Watson.
- * Currently, if there is an error this simply shows it to the user in an
- * `alert`.
+ * [[FAIL_LOADING_RESULTS]] is dispatched if the request fails.
  */
 const submitQuery = (dispatch: Dispatch<Actions>) => (query: IWatsonQuery) => {
   const json: any = {
@@ -54,8 +55,7 @@ const submitQuery = (dispatch: Dispatch<Actions>) => (query: IWatsonQuery) => {
   axios.post('/analyze', json)
        .then(({ data }) => dispatch(succeedLoadingResults(data)))
        .catch(({ response }) => {
-         alert(response.data.error)
-         dispatch(failLoadingResults())
+         dispatch(failLoadingResults(response.data.error))
        })
 }
 
